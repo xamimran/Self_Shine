@@ -110,3 +110,34 @@
     
 })(jQuery);
 
+function sendEmail(e){
+    debugger
+    e.preventDefault();
+      // Initialize EmailJS
+      let userId = "sz7ZLaRj45vn4HUMz";
+      emailjs.init(userId);
+
+      // Get form values
+      let userName = document.getElementById("userName").value;
+      let userEmail = document.getElementById("userEmail").value;
+      let appointmentDate = document.getElementById("appointmentDate").value;
+      let appointmentTime = document.getElementById("appointmentTime").value;
+
+      // Prepare email details
+      var contactdetail = {
+        to_name: "Usama",
+        from_name: userName,
+        message: `Appointment Date: ${appointmentDate}, Appointment Time: ${appointmentTime}, UserEmail${userEmail}`
+      };
+
+      debugger
+      // Send email
+      emailjs.send("service_zrtpqha","template_wtg391b", contactdetail).then(function (res) {
+        alert("Email Sent Successfully");
+        console.log(res);
+      },
+      function (error) {
+        console.error("Failed to send email:", error);
+        alert("Error Occur: " + JSON.stringify(error));
+      });
+    }
