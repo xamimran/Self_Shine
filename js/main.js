@@ -42,10 +42,12 @@
 
     // Date and time picker
     $('#date').datetimepicker({
-        format: 'L'
+        format: 'L',
+        minDate: moment() 
     });
     $('#time').datetimepicker({
-        format: 'LT'
+        format: 'LT',
+        minDate: moment() 
     });
 
 
